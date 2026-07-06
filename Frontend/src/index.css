@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+
+
+:root{
+--Primary: #16A34A;
+--Secondary: #22C55E;
+--Accent: #10B981;
+--Background: #F0FDF4;
+--Cards: #FFFFFF;
+--Sidebar: #DCFCE7;
+--Hover: #BBF7D0;
+--Border: #D1FAE5;
+--Text: #1F2937;
+--Light-Text: #6B7280;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+   font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.Main-app{
+  background: url("./Assets//Background.png");
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.Main-app{
+  position:relative;
+  width:100%;
+  min-height:100vh;
+  overflow:hidden;
+
+}
+
+/* Background Layer */
+.Main-app::before{
+  content:"";
+  position:absolute;
+  top:-10px;
+  left:-10px;
+  right:-10px;
+  bottom:-10px;
+
+  background:url("./Assets/Background.png") center;
+  background-size:400px;
+  background-repeat:repeat;
+
+  filter:blur(3px);      
+  opacity:0.5;
+
+  z-index:-1;
+}
+
+
+
+/* Extra Small Devices (Phones) */
+@media (max-width: 479px) {
+  /* Styles */
+}
+
+/* Small Phones */
+@media (min-width: 480px) and (max-width: 575px) {
+  /* Styles */
+}
+
+/* Large Phones */
+@media (min-width: 576px) and (max-width: 767px) {
+  /* Styles */
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Small Laptops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* Styles */
+}
+
+/* Desktops */
+@media (min-width: 1200px) and (max-width: 1399px) {
+  /* Styles */
+}
+
+/* Large Desktops */
+@media (min-width: 1400px) {
+  /* Styles */
+}

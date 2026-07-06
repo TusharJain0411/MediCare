@@ -1,0 +1,458 @@
+ :root{--font-size: 16px;
+  --background: #F0FDF4;
+  --foreground: #1F2937;
+  --card: #ffffff;
+  --card-foreground: #1F2937;
+  --popover: #ffffff;
+  --popover-foreground: #1F2937;
+  --primary: #16A34A;
+  --primary-foreground: #ffffff;
+  --secondary: #DCFCE7;
+  --secondary-foreground: #1F2937;
+  --muted: #DCFCE7;
+  --muted-foreground: #6B7280;
+  --accent: #10B981;
+  --accent-foreground: #ffffff;
+  --destructive: #EF4444;
+  --destructive-foreground: #ffffff;
+  --border: #D1FAE5;
+  --input: transparent;
+  --input-background: #F0FDF4;
+  --switch-background: #BBF7D0;
+  --font-weight-medium: 600;
+  --font-weight-normal: 400;
+  --ring: #16A34A;
+  --chart-1: #16A34A;
+  --chart-2: #22C55E;
+  --chart-3: #10B981;
+  --chart-4: #059669;
+  --chart-5: #34D399;
+  --radius: 1rem;
+  --sidebar: #DCFCE7;
+  --sidebar-foreground: #1F2937;
+  --sidebar-primary: #16A34A;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #BBF7D0;
+  --sidebar-accent-foreground: #1F2937;
+  --sidebar-border: #D1FAE5;
+  --sidebar-ring: #16A34A;
+}
+
+
+
+.Navbar{
+display: flex;
+width: 100%;
+ padding: 1rem 1.5rem;
+ justify-content: space-between;
+ align-items: center;
+}
+
+.Navbar .Logo{
+    display: flex;
+    gap: 1rem;
+
+}
+
+.Navbar .Logo .fa-heart{
+    color: var(--card);
+    background-color: var(--primary);
+    font-size: 24px;
+    border-radius:50% ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+}
+
+.Navbar .Logo .Logo-txt{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2px;          /* Adjust as needed (0px–4px) */
+}
+
+.Navbar .Logo .Logo-txt span{
+    line-height: 1.1;  /* Reduces vertical spacing */
+    margin: 0;
+    padding: 0;
+}
+
+.Navbar .Logo .Logo-txt span:first-child{
+    font-size: 20px;
+    color: var(--primary);
+    font-weight: var(--font-weight-medium);
+}
+
+.Navbar .Logo .Logo-txt .role{
+    font-size: var(--font-size);
+    color: var(--muted-foreground);
+    font-weight: var(--font-weight-normal);
+}
+
+
+.User-detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    gap: 1rem;
+}
+
+
+.notification {
+    width: 50px;
+    height: 50px;
+    background: var(--muted);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.notification:hover{
+    border: 1px solid var(--primary);
+}
+
+.notification-count {
+    position: absolute;
+    top: -4px;
+    right: -6px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--ring);
+    color: var(--card);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    font-weight: 700;
+    border: 2px solid var(--card); /* optional white border */
+    font-size: 14px;
+}
+
+.Profile {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--muted);
+    border-radius: 25px;
+}
+
+.Profile:hover{
+    border: 1px solid var(--primary);
+}
+
+.profile-avatar {
+    width: 35px;
+    height: 35px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--card);
+    font-weight: 800;
+    border: 2px solid var(--sidebar-accent);
+    flex-shrink: 0;
+    box-shadow: 0 0 2px var(--card-foreground);
+    text-transform: capitalize;
+}
+
+.profile-name {
+    margin: 0;
+    font-weight: 700;
+    color: var(--card-foreground);
+    text-transform: capitalize;
+}
+
+.Profile i{
+    color: var(--muted-foreground);
+}
+
+
+
+.Profile-extend{
+     display: flex;
+     justify-content: start;
+     align-items: center;
+     gap: 1rem;
+   flex-direction: column;
+    padding: 1.5rem 1rem;
+    background: var(--muted);
+    border-radius: 25px;
+    position: absolute;
+    z-index: 100;
+    top: 15vh;
+    right: 3vh;
+    width: 20%;
+    
+}
+
+.Profile-extend .profile-avatar{
+    font-size: 26px;
+    width: 60px;
+    height: 60px;
+    text-transform: capitalize;
+}
+
+
+.Profile-extend button{
+    display: flex;
+    gap:0.5rem ;
+    padding:0.5rem 1.2rem;
+  margin-top: 0.5rem;
+   background-color: transparent;
+    border: none;
+background-color: var(--destructive-foreground);
+    border-radius: 25px;
+    justify-content: center;
+    align-items: center;
+    color: red;
+}
+.Profile-extend h4{
+    text-transform: capitalize;
+}
+.Profile-extend button:hover{
+    background-color: rgb(250, 184, 184);
+}
+
+/* 1400px and below */
+@media (max-width: 1400px) {
+
+}
+
+/* 1200px and below */
+@media (max-width: 1200px) {
+
+}
+
+/* 992px and below */
+@media (max-width: 992px) {
+.Profile-extend{
+    
+     gap: 1rem;
+ 
+    padding: 1.5rem 1rem;
+  
+    top: 10vh;
+    right: 3vh;
+    width: 30%;
+    
+}
+
+.Profile-extend .profile-avatar{
+    font-size: 24px;
+    width: 55px;
+    height: 55px;
+}
+.Profile-extend h4{
+    font-size: 24px;
+}
+.Profile-extend span{
+    font-size: 14px;
+}
+/* .Profile-extend button{
+    gap:0.5rem ;
+    padding:0.5rem 1.2rem;
+ 
+
+} */
+}
+
+/* 768px and below */
+@media (max-width: 768px) {
+
+.Profile{
+padding: 0.5rem;
+}   
+
+.profile-name{
+    display: none;
+}
+.User-detail{
+    gap: 0.5rem;
+}
+
+.Navbar .Logo{
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.Navbar .Logo .fa-heart{
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+}
+
+.Navbar{
+    padding: 0.5rem 1rem;
+}
+
+
+.Navbar .Logo .Logo-txt span:first-child{
+    font-size:18px;
+}
+
+.Navbar .Logo .Logo-txt .role{
+    font-size:14;
+}
+
+
+
+.Profile-extend{  
+     gap: 0.8rem;
+    width: 50%;
+}
+
+.Profile-extend .profile-avatar{
+    font-size: 22px;
+    width: 50px;
+    height: 50px;
+}
+.Profile-extend h4{
+    font-size: 18px;
+}
+.Profile-extend span{
+    font-size: 10px;
+}
+ .Profile-extend button{
+    gap:0.3rem ;
+    padding:0.5rem 1rem;
+ 
+
+} 
+}
+
+/* 576px and below */
+@media (max-width: 576px) {
+.Navbar .Logo{
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.Navbar .Logo .fa-heart{
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+}
+
+.Navbar .Logo .Logo-txt span:first-child{
+    font-size:16px;
+}
+
+.Navbar .Logo .Logo-txt .role{
+    font-size:12;
+}
+
+.notification {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+   
+}
+
+.notification-count {
+    
+    top: -4px;
+    right: -6px;
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+}
+
+.Profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem ;
+    
+}
+
+.profile-avatar {
+    width: 30px;
+    height: 30px;
+    
+}
+
+}
+
+/* 425px and below */
+@media (max-width: 425px) {
+
+}
+
+/* 375px and below */
+@media (max-width: 375px) {
+
+.Navbar .Logo{
+    gap: 0.3rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.Navbar .Logo .fa-heart{
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+}
+
+.Navbar .Logo .Logo-txt span:first-child{
+    font-size:15px;
+}
+
+.Navbar .Logo .Logo-txt .role{
+    font-size:8;
+}
+
+.Logo-txt{
+    word-spacing: -0.3rem;
+}
+    
+.notification {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+   
+}
+
+.notification-count {
+    
+    top: -4px;
+    right: -6px;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+   
+}
+
+.Profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem ;
+    
+}
+
+.profile-avatar {
+    width: 25px;
+    height: 25px;
+    
+}
+}
+
+/* 320px and below */
+@media (max-width: 320px) {
+
+}

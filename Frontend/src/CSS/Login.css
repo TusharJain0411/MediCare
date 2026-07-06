@@ -1,0 +1,164 @@
+:root{
+--Primary: #16A34A;
+--Secondary: #22C55E;
+--Accent: #10B981;
+--Background: #F0FDF4;
+--Cards: #FFFFFF;
+--Sidebar: #DCFCE7;
+--Hover: #BBF7D0;
+--Border: #D1FAE5;
+--Text: #1F2937;
+--Light-Text: #6B7280;
+--text-size:16px;
+
+--input-background: #F0FDF4;
+  --switch-background: #BBF7D0;
+}
+
+
+.Login-component{
+    padding:1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.Login-component h2{
+    color: var(--Text);
+    font-weight: 700;
+    
+}
+
+.Login-component p{
+    color: var(--Light-Text);
+    font-size: var(--text-size);
+    margin-bottom: 2.5rem;
+}
+
+.LoginInput{
+    display: flex;
+    flex-direction: column;
+}
+.LoginInput div{
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+
+    
+}
+.LoginInput div label{
+    font-size: var(--text-size);
+font-weight:600;
+}
+
+.LoginInput div input{
+    padding: 0.5rem ;
+    padding-left:2.5rem ;
+    padding-right: 1rem;
+    font-size: var(--text-size);
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background-color: var(--input-background);
+    width: 100%;
+    border: 1px solid var(--Hover);
+}
+
+.LoginInput div input:focus{
+    border: 2px solid var(--Primary);
+}
+
+.LoginInput div input::placeholder{
+color: var(--Light-Text);
+}
+
+.LoginInput div .fa-envelope{
+    position: absolute;
+    color: var(--Light-Text);
+    bottom: 0.7rem;
+    left: 1rem;
+    font-size: var(--text-size);
+}
+
+.LoginInput div .fa-lock{
+    position: absolute;
+    color: var(--Light-Text);
+    bottom: 0.7rem;
+    left: 1rem;
+    font-size: var(--text-size);
+}
+
+.LoginInput div .fa-eye,
+.LoginInput div .fa-eye-slash{
+position: absolute;
+color: var(--Light-Text);
+bottom: 0.7rem;
+font-size: var(--text-size);
+right: 1rem;
+}
+
+
+.LoginInput .SignIn{
+    font-size: var(--text-size);
+    padding: 0.5rem;
+    border: none;
+    border-radius: 20px;
+margin-top: 1.5rem;
+background: linear-gradient(90deg,var(--Primary),var(--Secondary));
+color: var(--Cards);
+font-weight: 600;
+}
+
+.LoginInput .SignIn:hover{
+    box-shadow: 0 4px 10px var(--Hover);
+}
+
+
+.Login-component h4.logo{
+    display: none;
+}
+
+/* Extra Small Devices (Phones) */
+@media (max-width: 479px) {
+ .Login-component p,.LoginInput div i,.LoginInput .SignIn,.LoginInput div input,.LoginInput div label{
+    font-size: 14px;
+ }
+ .Login-component h4.logo{
+    display: block;
+    color: var(--Primary);
+    font-weight: 800;
+    margin-bottom: 2rem;
+}
+}
+
+/* Small Phones */
+@media (min-width: 480px) and (max-width: 575px) {
+  /* Styles */
+}
+
+/* Large Phones */
+@media (min-width: 576px) and (max-width: 767px) {
+  /* Styles */
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Small Laptops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* Styles */
+}
+
+/* Desktops */
+@media (min-width: 1200px) and (max-width: 1399px) {
+  /* Styles */
+}
+
+/* Large Desktops */
+@media (min-width: 1400px) {
+  /* Styles */
+}

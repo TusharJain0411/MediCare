@@ -1,0 +1,178 @@
+:root{
+--Primary: #16A34A;
+--Secondary: #22C55E;
+--Accent: #10B981;
+--Background: #F0FDF4;
+--Cards: #FFFFFF;
+--Sidebar: #DCFCE7;
+--Hover: #BBF7D0;
+--Border: #D1FAE5;
+--Text: #1F2937;
+--Light-Text: #6B7280;
+--text-size:16px;
+
+--input-background: #F0FDF4;
+  --switch-background: #BBF7D0;
+}
+
+
+.Register-component{
+    padding:1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.Register-component h4{
+    color: var(--Text);
+    font-weight: 700;
+}
+
+.Register-component p{
+    color: var(--Light-Text);
+    font-size: var(--text-size);
+    margin-bottom: 1.5rem;
+}
+
+.RegisterInput{
+    display: flex;
+    flex-direction: column;
+}
+.RegisterInput div{
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    position: relative;
+
+    
+}
+.RegisterInput div label{
+    font-size: var(--text-size);
+font-weight:600;
+}
+
+.RegisterInput div input{
+    padding: 0.4rem ;
+    padding-left:2.5rem ;
+    padding-right: 1rem;
+    font-size: var(--text-size);
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background-color: var(--input-background);
+    width: 100%;
+    border: 1px solid var(--Hover);
+}
+
+.RegisterInput div input:focus{
+    border: 2px solid var(--Primary);
+}
+
+.RegisterInput div input::placeholder{
+color: var(--Light-Text);
+}
+
+.RegisterInput div .fa-user{
+    position: absolute;
+    color: var(--Light-Text);
+    bottom: 0.6rem;
+    left: 1rem;
+    font-size: var(--text-size);
+}
+.RegisterInput div .fa-envelope{
+    position: absolute;
+    color: var(--Light-Text);
+    bottom: 0.6rem;
+    left: 1rem;
+    font-size: var(--text-size);
+}
+.RegisterInput div .fa-phone{
+    position: absolute;
+    color: var(--Light-Text);
+    bottom: 0.6rem;
+    left: 1rem;
+    font-size: var(--text-size);
+}
+.RegisterInput div .fa-lock{
+    position: absolute;
+    color: var(--Light-Text);
+    bottom: 0.6rem;
+    left: 1rem;
+    font-size: var(--text-size);
+}
+
+.RegisterInput div .fa-eye,
+.RegisterInput div .fa-eye-slash{
+position: absolute;
+color: var(--Light-Text);
+bottom: 0.7rem;
+font-size: var(--text-size);
+right: 1rem;
+}
+
+
+
+
+.RegisterInput button{
+    font-size: var(--text-size);
+    padding: 0.5rem;
+    border: none;
+    border-radius: 20px;
+margin-top: 0.5rem;
+background: linear-gradient(90deg,var(--Primary),var(--Secondary));
+color: var(--Cards);
+font-weight: 600;
+}
+
+.RegisterInput button:hover{
+    box-shadow: 0 4px 10px var(--Hover);
+}
+
+.Register-component h4.logo{
+    display: none;
+}
+
+
+@media (max-width: 479px) {
+ .Register-component p,.RegisterInput div i,.RegisterInput button,.RegisterInput div input,.RegisterInput div label{
+    font-size: 14px;
+ }
+
+ .Register-component h4.logo{
+    display: block;
+    color: var(--Primary);
+    font-weight: 800;
+    margin-bottom: 2rem;
+}
+}
+
+/* Small Phones */
+@media (min-width: 480px) and (max-width: 575px) {
+  /* Styles */
+}
+
+/* Large Phones */
+@media (min-width: 576px) and (max-width: 767px) {
+  /* Styles */
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Small Laptops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* Styles */
+}
+
+/* Desktops */
+@media (min-width: 1200px) and (max-width: 1399px) {
+  /* Styles */
+}
+
+/* Large Desktops */
+@media (min-width: 1400px) {
+  /* Styles */
+}

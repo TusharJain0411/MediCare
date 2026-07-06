@@ -1,0 +1,284 @@
+ :root{--font-size: 16px;
+  --background: #F0FDF4;
+  --foreground: #1F2937;
+  --card: #ffffff;
+  --card-foreground: #1F2937;
+  --popover: #ffffff;
+  --popover-foreground: #1F2937;
+  --primary: #16A34A;
+  --primary-foreground: #ffffff;
+  --secondary: #DCFCE7;
+  --secondary-foreground: #1F2937;
+  --muted: #DCFCE7;
+  --muted-foreground: #6B7280;
+  --accent: #10B981;
+  --accent-foreground: #ffffff;
+  --destructive: #EF4444;
+  --destructive-foreground: #ffffff;
+  --border: #D1FAE5;
+  --input: transparent;
+  --input-background: #BBF7D0;
+  --switch-background: #BBF7D0;
+  --font-weight-medium: 600;
+  --font-weight-normal: 400;
+  --ring: #16A34A;
+  --chart-1: #16A34A;
+  --chart-2: #22C55E;
+  --chart-3: #10B981;
+  --chart-4: #059669;
+  --chart-5: #34D399;
+  --radius: 1rem;
+  --sidebar: #DCFCE7;
+  --sidebar-foreground: #1F2937;
+  --sidebar-primary: #16A34A;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #BBF7D0;
+  --sidebar-accent-foreground: #1F2937;
+  --sidebar-border: #D1FAE5;
+  --sidebar-ring: #16A34A;
+  --Secondary: #22C55E;
+}
+
+.dashboard {
+  width: 95%;
+  margin: 30px auto;
+}
+
+/* =========================
+        TOP CARDS
+========================= */
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 30px;
+}
+
+.dash-card {
+  background: var(--card);
+  border-radius: 22px;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border: 1px solid var(--border);
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+}
+
+.dash-card span {
+  display: block;
+  color: var(--muted-foreground);
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.dash-card h2 {
+  font-size: 40px;
+  color: var(--primary);
+  margin: 0;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 34px;
+}
+
+.blue {
+  background: #eef4ff;
+  color: rgb(104, 104, 218);
+}
+
+.green {
+  background: #ebfaef;
+  color: var(--primary);
+}
+
+.yellow {
+  background: #fff9e8;
+  color: rgb(245, 214, 10);
+}
+
+
+
+.dashboard-bottom {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 30px;
+}
+
+
+
+.recent-doctors,
+.overview {
+  background: var(--card);
+  border-radius: 22px;
+  padding: 28px;
+  border: 1px solid var(--border);
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+}
+
+.recent-doctors h2,
+.overview h2 {
+  margin: 0 0 25px;
+  font-size: 32px;
+  color: var(--text);
+}
+
+.overview h2 {margin-bottom: 35px;}
+
+
+
+.inside-doctor-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.inside-doctor-row:not(:last-child) {
+  border-bottom: 1px solid #eef2f7;
+}
+
+.recent-doctor-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.recent-doctor-info img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.recent-doctor-info div {
+  display: flex;
+  flex-direction: column;
+}
+
+.recent-doctor-info h4 {
+  margin: 0;
+  font-size: 20px;
+  color: var(--text);
+}
+
+.recent-doctor-info span {
+  margin-top: 5px;
+  color: var(--primary);
+  font-size: 16px;
+}
+
+.inside-doctor-row button {
+  background: var(--input-background);
+  color: var(--primary);
+  border: 1px solid #bbf7d0;
+  padding: 8px 22px;
+  border-radius: 30px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+
+.progress-box {
+  margin-bottom: 32px;
+}
+
+.progress-box:last-child {
+  margin-bottom: 0;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.title span:first-child {
+  font-size: 20px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.title span:last-child {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.progress {
+  width: 100%;
+  height: 12px;
+  background: #e8f6eb;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.progress div {
+  height: 100%;
+  background: linear-gradient(90deg,var(--primary),var(--Secondary));
+  border-radius: 50px;
+}
+
+
+
+@media (max-width: 992px) {
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media (max-width: 920px) {
+    .dashboard-cards{
+    width: 70%;
+    margin: auto;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+ 
+  .inside-doctor-row {
+    
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .recent-doctor-info img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .dash-card h2 {
+    font-size: 40px;
+  }
+
+  .recent-doctors h2,
+  .overview h2 {
+    font-size: 24px;
+  }
+
+  
+  .recent-doctors span{
+    font-size: 14px;
+  }
+
+  .title span:first-child,
+  .title span:last-child {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,311 @@
+ :root{--font-size: 16px;
+  --background: #F0FDF4;
+  --foreground: #1F2937;
+  --card: #ffffff;
+  --card-foreground: #1F2937;
+  --popover: #ffffff;
+  --popover-foreground: #1F2937;
+  --primary: #16A34A;
+  --primary-foreground: #ffffff;
+  --secondary: #DCFCE7;
+  --secondary-foreground: #1F2937;
+  --muted: #DCFCE7;
+  --muted-foreground: #6B7280;
+  --accent: #10B981;
+  --accent-foreground: #ffffff;
+  --destructive: #EF4444;
+  --destructive-foreground: #ffffff;
+  --border: #D1FAE5;
+  --input: transparent;
+  --input-background: #F0FDF4;
+  --switch-background: #BBF7D0;
+  --font-weight-medium: 600;
+  --font-weight-normal: 400;
+  --ring: #16A34A;
+  --chart-1: #16A34A;
+  --chart-2: #22C55E;
+  --chart-3: #10B981;
+  --chart-4: #059669;
+  --chart-5: #34D399;
+  --radius: 1rem;
+  --sidebar: #DCFCE7;
+  --sidebar-foreground: #1F2937;
+  --sidebar-primary: #16A34A;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #BBF7D0;
+  --sidebar-accent-foreground: #1F2937;
+  --sidebar-border: #D1FAE5;
+  --sidebar-ring: #16A34A;
+}
+
+
+.doctor-table-wrapper {
+    width: 95%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,.05);
+    margin: auto;
+    border-radius: 16px;
+}
+
+.doctor-list {
+    min-width: 1100px;   /* Set according to your columns */
+    width: 100%;
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid #dff4e8;
+    
+}
+
+
+.doctor-header,
+.doctor-row{
+    display:grid;
+    grid-template-columns:
+    2fr
+    1.5fr
+    2.2fr
+    1fr
+    1.3fr
+    2.2fr;
+
+    align-items:center;
+}
+
+
+
+.doctor-header{
+    background:#f2fdf4;
+    font-weight:600;
+    color:#1f2937;
+    padding:20px 24px;
+    border-bottom:1px solid #dff4e8;
+    text-transform: uppercase;
+}
+
+.doctor-row{
+    padding:22px 24px;
+    border-bottom:1px solid #eef4ef;
+    transition:.25s;
+}
+
+.doctor-row:last-child{
+    border-bottom:none;
+}
+
+.doctor-row:hover{
+    background:#fafdfb;
+}
+
+.doctor-information{
+display: flex;
+flex-direction: column;
+
+}
+.doctor-information h4{
+    margin:0;
+    font-size:18px;
+    font-weight:600;
+    text-transform: capitalize;
+}
+
+.doctor-information span{
+    display:block;
+    margin-top:6px;
+    color:#7b8794;
+    font-size:14px;
+    text-transform: uppercase;
+}
+.specialization{
+    color: var(--primary);
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.Hospital{
+    color: var(--muted-foreground);
+}
+
+.fee{
+font-weight: 700;
+}
+
+.status{
+    padding:8px 18px;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:600;
+}
+
+.status.active{
+    color:#16a34a;
+    background:#dcfce7;
+}
+
+.doctorActions{
+    display:flex;
+    gap:10px;
+}
+
+.doctorActions button{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+   font-size: 14px;
+    cursor:pointer;
+    transition:.25s;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.doctorAction-approval{
+    display: flex;
+    gap: 10px;
+}
+
+.doctorAction-approval button{
+    border: none;
+    border-radius: 16px;
+    padding: 0.5rem 1rem;
+}
+.doctorAction-approval button:first-child{
+      color: rgb(33, 196, 30);
+    border: 1px solid rgb(33, 196, 30);
+    background-color: rgb(231, 248, 230);
+}
+.doctorAction-approval button:last-child
+{
+color: rgb(241, 64, 52);
+    border: 1px solid rgb(241, 64, 52);
+    background-color: rgb(248, 219, 217);
+}
+
+.doctorAction-approval button:nth-child(1):hover,.doctorAction-approval button:nth-child(2):hover{
+    background-color: var(--card);
+}
+.doctorActions button:nth-child(1){
+    color: rgb(34, 128, 222);
+    border: 1px solid rgb(34, 128, 222);
+    background-color: rgb(232, 243, 255);
+}
+
+
+.doctorActions button:nth-child(2){
+    color: rgb(241, 64, 52);
+    border: 1px solid rgb(241, 64, 52);
+    background-color: rgb(248, 219, 217);
+}
+
+.doctorActions button:nth-child(1):hover,.doctorActions button:nth-child(2):hover,.doctorActions button:nth-child(3):hover{
+    background-color: var(--card);
+}
+
+
+
+.status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status.pending {
+  background: #fff4cc;
+  color: #b7791f;
+}
+
+.status.active {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.status.rejected {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+
+
+
+
+.doctor-modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.doctor-modal{
+    width:700px;
+    max-width:95%;
+    background:#fff;
+    border-radius:16px;
+    overflow:hidden;
+    animation:popup .25s ease;
+}
+
+@keyframes popup{
+    from{
+        opacity:0;
+        transform:scale(.9);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.doctor-modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 25px;
+    border-bottom:1px solid #eee;
+    background-color: var(--input-background);
+}
+
+.close-btn{
+    border:none;
+    background:none;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.doctor-modal-body{
+    padding:25px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.detail{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+.detail span{
+    color:#777;
+    font-size:14px;
+}
+
+.detail p{
+    margin:0;
+    font-weight:600;
+    color:#222;
+}
+
+.description{
+    grid-column:1/3;
+}
+
+.description p{
+    line-height:1.6;
+}
