@@ -8,7 +8,7 @@ import {
   loginSuccess,
   setError,
   clearMessages,
-} from "../redux/slices/userSlice";
+} from "../Redux/slices/userSlice";
 import {showLoading,hideLoading} from "../Redux/slices/alertSlice"
 import "../CSS/Login.css"
 

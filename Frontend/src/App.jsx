@@ -1,4 +1,4 @@
-import { loginSuccess } from "./redux/slices/userSlice";
+import { loginSuccess } from "./Redux/slices/userSlice";
 
 import react, {  useEffect } from "react";
 import "./index.css";

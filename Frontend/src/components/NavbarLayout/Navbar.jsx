@@ -11,7 +11,7 @@ import "../../CSS/navbar.css"
 import { useNavigate } from 'react-router-dom';
 
 import { useDispatch, useSelector } from "react-redux";
-import { setUnreadCount } from "../../redux/slices/notificationSlice";
+import { setUnreadCount } from "../../Redux/slices/notificationSlice";
 
 function Navbar() {
 

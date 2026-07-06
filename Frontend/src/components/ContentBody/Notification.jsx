@@ -14,7 +14,7 @@ import {
   setUnreadCount,
   decreaseUnreadCount,
   clearUnreadCount,
-} from "../../redux/slices/notificationSlice";
+} from "../../Redux/slices/notificationSlice";
 
 
 function Notification() {

@@ -8,7 +8,7 @@ import "../../CSS/sidebar.css";
 import UserMenu from "./UserMenu";
 import AdminMenu from './AdminMenu';
 import DoctorMenu from './DoctorMenu';
-import { logout } from "../../redux/slices/userSlice";
+import { logout } from "../../Redux/slices/userSlice";
 
 
 function Sidebar() {
