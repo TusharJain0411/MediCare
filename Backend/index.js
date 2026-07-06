@@ -22,6 +22,10 @@ app.use("/medicare/admin",require("./routes/adminRoute"));
 
 app.use("/medicare/appointment", require("./routes/appointmentRoute"));
 
+app.get("/", (req, res) => {
+  res.send("MediCare Backend is Running 🚀");
+});
+
 app.listen(PORT, () => {
   console.log(`server is running on http://localhost:${PORT}`);
 });
