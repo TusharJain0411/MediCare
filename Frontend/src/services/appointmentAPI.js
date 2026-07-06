@@ -1,32 +1,32 @@
 //appointmentAPI.js
 
-import axios from "axios";
+import API from "./api";
 
-const BASE = "http://localhost:1300/medicare/appointment";
+const BASE = "/medicare/appointment";
 
 export const bookAppointment = (data, token) =>
-  axios.post(`${BASE}/book`, data, {
+  API.post(`${BASE}/book`, data, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
 export const getDoctorAppointments = (token) =>
-  axios.get(`${BASE}/doctor`, {
+  API.get(`${BASE}/doctor`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
 export const getUserAppointments = (token) =>
-  axios.get(`${BASE}/user`, {
+  API.get(`${BASE}/user`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
 export const approveAppointment = (id, token) =>
-  axios.put(
+  API.put(
     `${BASE}/approve/${id}`,
     {},
     {
@@ -37,7 +37,7 @@ export const approveAppointment = (id, token) =>
   );
 
 export const rejectAppointment = (id, token) =>
-  axios.put(
+  API.put(
     `${BASE}/reject/${id}`,
     {},
     {
@@ -48,7 +48,7 @@ export const rejectAppointment = (id, token) =>
   );
 
 export const completeAppointment = (id, token) =>
-  axios.put(
+  API.put(
     `${BASE}/complete/${id}`,
     {},
     {
@@ -59,7 +59,7 @@ export const completeAppointment = (id, token) =>
   );
 
 export const getTodayAppointments = (token) => {
-  return axios.get(`${BASE}/today`, {
+  return API.get(`${BASE}/today`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -67,7 +67,7 @@ export const getTodayAppointments = (token) => {
 };
 
 export const getDoctorDashboard = (token) => {
-  return axios.get(`${BASE}/dashboard`, {
+  return API.get(`${BASE}/dashboard`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

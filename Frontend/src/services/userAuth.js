@@ -1,11 +1,11 @@
-import axios from "axios";
+import API from "./api";
 
 export const LoginUser = (data) => {
-  return axios.post(`http://localhost:1300/medicare/user/login`, data);
+  return API.post(`/medicare/user/login`, data);
 };
 
 export const verifyUserToken = (token) => {
-  return axios.get(`http://localhost:1300/medicare/user/verify-token`, {
+  return API.get(`/medicare/user/verify-token`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -13,12 +13,12 @@ export const verifyUserToken = (token) => {
 };
 
 export const RegisteUser = (data) => {
-  return axios.post("http://localhost:1300/medicare/user/register", data);
+  return API.post("/medicare/user/register", data);
 };
 
 export const logoutUser = (token) => {
-  return axios.post(
-    "http://localhost:1300/medicare/user/logout",
+  return API.post(
+    "/medicare/user/logout",
     {},
     {
       headers: {
@@ -29,7 +29,7 @@ export const logoutUser = (token) => {
 };
 
 export const getProfile = (token) => {
-  return axios.get(`http://localhost:1300/medicare/user/profile`, {
+  return API.get(`/medicare/user/profile`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -37,7 +37,7 @@ export const getProfile = (token) => {
 };
 
 export const getAllUsers = (token) => {
-  return axios.get("http://localhost:1300/medicare/user/all-users", {
+  return API.get("/medicare/user/all-users", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -45,7 +45,7 @@ export const getAllUsers = (token) => {
 };
 
 export const deleteUser = (id, token) => {
-  return axios.delete(`http://localhost:1300/medicare/user/delete/${id}`, {
+  return API.delete(`/medicare/user/delete/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -53,8 +53,8 @@ export const deleteUser = (id, token) => {
 };
 
 export const updateAdmin = (token, form) => {
-  return axios.put(
-    "http://localhost:1300/medicare/user/profile",
+  return API.put(
+    "/medicare/user/profile",
     {
       name: form.name,
       email: form.email,
@@ -69,7 +69,7 @@ export const updateAdmin = (token, form) => {
 };
 
 export const getAdmin = (token) => {
-  return axios.get("http://localhost:1300/medicare/user/profile", {
+  return API.get("/medicare/user/profile", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -77,7 +77,7 @@ export const getAdmin = (token) => {
 };
 
 export const getNotifications = (token) => {
-  return axios.get("http://localhost:1300/medicare/user/", {
+  return API.get("/medicare/user/", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -85,8 +85,8 @@ export const getNotifications = (token) => {
 };
 
 export const markAllNotificationsRead = (token) => {
-  return axios.put(
-    "http://localhost:1300/medicare/user/read-all",
+  return API.put(
+    "/medicare/user/read-all",
     {},
     {
       headers: {
@@ -97,8 +97,8 @@ export const markAllNotificationsRead = (token) => {
 };
 
 export const markNotificationRead = (id, token) => {
-  return axios.put(
-    `http://localhost:1300/medicare/user/notifications/read/${id}`,
+  return API.put(
+    `/medicare/user/notifications/read/${id}`,
     {},
     {
       headers: {
@@ -109,7 +109,7 @@ export const markNotificationRead = (id, token) => {
 };
 
 export const deleteAllNotifications = (token) => {
-  return axios.delete("http://localhost:1300/medicare/user/delete-all", {
+  return API.delete("/medicare/user/delete-all", {
     headers: {
       Authorization: `Bearer ${token}`,
     },

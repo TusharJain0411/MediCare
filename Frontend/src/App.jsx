@@ -1,6 +1,6 @@
 import { loginSuccess } from "./redux/slices/userSlice";
 
-import react, { useState, useEffect } from "react";
+import react, {  useEffect } from "react";
 import "./index.css";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./CSS/Login_register.css";

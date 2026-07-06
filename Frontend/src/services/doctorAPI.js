@@ -1,23 +1,23 @@
-import axios from "axios";
+import API from "./api";
 
-const BASE = "http://localhost:1300/medicare/doctor";
+const BASE = "/medicare/doctor";
 
 export const applyDoctor = (data, token) =>
-  axios.post(`${BASE}/apply`, data, {
+  API.post(`${BASE}/apply`, data, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
 export const getAllDoctors = (token) =>
-  axios.get(`${BASE}/all`, {
+  API.get(`${BASE}/all`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
 export const approveDoctor = (id, token) =>
-  axios.put(
+  API.put(
     `${BASE}/approve/${id}`,
     {},
     {
@@ -28,7 +28,7 @@ export const approveDoctor = (id, token) =>
   );
 
 export const rejectDoctor = (id, token) =>
-  axios.put(
+  API.put(
     `${BASE}/reject/${id}`,
     {},
     {
@@ -39,21 +39,21 @@ export const rejectDoctor = (id, token) =>
   );
 
 export const deleteDoctor = (id, token) =>
-  axios.delete(`${BASE}/delete/${id}`, {
+  API.delete(`${BASE}/delete/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
 export const getDoctorProfile = (token) =>
-  axios.get(`${BASE}/profile`, {
+  API.get(`${BASE}/profile`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
 export const updateDoctorProfile = (data, token) => {
-  return axios.put(`${BASE}/profile`, data, {
+  return API.put(`${BASE}/profile`, data, {
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "multipart/form-data",
@@ -62,17 +62,11 @@ export const updateDoctorProfile = (data, token) => {
 };
 
 export const getRecentDoctors = (token) => {
-  return axios.get("http://localhost:1300/medicare/doctor/recent", {
+  return API.get("/medicare/doctor/recent", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 };
 
-export const getDashboardStats = (token) => {
-  return axios.get("http://localhost:1300/medicare/doctor/dashboard", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
+
