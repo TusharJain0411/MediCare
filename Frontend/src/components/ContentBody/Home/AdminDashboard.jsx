@@ -96,7 +96,7 @@ function AdminDashboard() {
                     <img
                       src={
                         doctor.profileImage
-                          ? `${import.meta.env.VITE_API_URL}${doctor.profileImage}`
+                          ? doctor.profileImage
                           : profile_img
                       }
                       alt={doctor.user?.name}
