@@ -115,7 +115,7 @@ function UserHome() {
                     ? `${import.meta.env.VITE_API_URL}${doctor.profileImage}`
                     : profile_img
                 }
-                alt={doctor.user?.name}
+                alt={profile_img}
               />
 
               {isDoctorAvailable(doctor) ? (
@@ -143,7 +143,7 @@ function UserHome() {
                       ? `${import.meta.env.VITE_API_URL}${doctor.profileImage}`
                       : profile_img
                   }
-                  alt={doctor.user?.name}
+                  alt={profile_img}
                 />
               </div>
             </div>
