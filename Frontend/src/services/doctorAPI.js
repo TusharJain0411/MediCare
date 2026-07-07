@@ -46,7 +46,7 @@ export const deleteDoctor = (id, token) =>
   });
 
 export const getDoctorProfile = (token) =>
-  API.get(`${BASE}/profile`, {
+  API.get(`/medicare/doctor/profile`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
