@@ -110,11 +110,7 @@ function UserHome() {
           <div className="doctor-card" key={doctor._id}>
             <div className="doctor-banner">
               <img
-                src={
-                  doctor.profileImage
-                    ? `${doctor.profileImage}`
-                    : profile_img
-                }
+                src={`${import.meta.env.VITE_API_URL}${doctor.profileImage}`}
                 alt={doctor.user?.name}
               />
 
@@ -138,11 +134,7 @@ function UserHome() {
 
               <div className="profile-img">
                 <img
-                  src={
-                    doctor.profileImage
-                      ? `${doctor.profileImage}`
-                      : profile_img
-                  }
+                  src={`${import.meta.env.VITE_API_URL}${doctor.profileImage}`}
                   alt={doctor.user?.name}
                 />
               </div>

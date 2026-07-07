@@ -285,9 +285,10 @@ const updateDoctorProfile = async (req, res) => {
     doctor.description = description;
         
 
-    if (req.file) {
-    doctor.profileImage = `/uploads/doctors/${req.file.filename}`;
-    }
+  if (req.file) {
+      console.log(req.file);
+    doctor.profileImage = req.file.path;
+  }
 
 
 
