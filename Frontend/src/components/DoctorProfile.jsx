@@ -6,7 +6,6 @@ import profile_img from "../Assets/profile-img.jpg";
 
 function DoctorProfile() {
 
-const API_URL = import.meta.env.VITE_API_URL;
 
   const token = localStorage.getItem("token");
 const [doctor, setDoctor] = useState({
@@ -93,7 +92,9 @@ const handleImageChange = (e) => {
      });
 
      if (res.data.doctor.profileImage) {
-       setImage(`${API_URL}${res.data.doctor.profileImage}`);
+       setImage(
+         `${import.meta.env.VITE_API_URL}${res.data.doctor.profileImage}`,
+       );
      }
    } catch (err) {
      toast.error(err.response?.data?.message || "Error loading profile");

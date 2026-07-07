@@ -6,6 +6,8 @@ import toast from "react-hot-toast";
 import profile_img from "../../../Assets/profile-img.jpg";
 
 function UserHome() {
+
+
   const [doctors, setDoctors] = useState([]);
 
   const token = localStorage.getItem("token");
@@ -138,7 +140,7 @@ function UserHome() {
                 <img
                   src={
                     doctor.profileImage
-                      ? `${API_URL}${doctor.profileImage}`
+                      ? `${import.meta.env.VITE_API_URL}${doctor.profileImage}`
                       : profile_img
                   }
                   alt={doctor.user?.name}
