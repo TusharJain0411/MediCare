@@ -52,7 +52,32 @@ function AdminProfile() {
     }
   };
 
-  if (loading) return <h3>Loading...</h3>;
+  if (loading) return (
+    <div className="loader-container">
+      <div className="loader-content">
+        <button className="btn bg-transparent p-1 m-0" type="button" disabled>
+          <span
+            className="spinner-grow spinner-grow-sm"
+            style={{ backgroundColor: "#22C55E" }}
+          ></span>
+        </button>
+
+        <button className="btn bg-transparent p-1 m-0" type="button" disabled>
+          <span
+            className="spinner-grow spinner-grow-sm"
+            style={{ backgroundColor: "#22C55E" }}
+          ></span>
+        </button>
+
+        <button className="btn bg-transparent p-1 m-0" type="button" disabled>
+          <span
+            className="spinner-grow spinner-grow-sm"
+            style={{ backgroundColor: "#22C55E" }}
+          ></span>
+        </button>
+      </div>
+    </div>
+  );
 
   return (
     <div className="admin-profile">

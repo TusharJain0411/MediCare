@@ -13,7 +13,7 @@ import toast from "react-hot-toast";
 
 function DoctorsList() {
   const [doctors, setDoctors] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
 
   const [showModal, setShowModal] = useState(false);
@@ -33,14 +33,18 @@ function DoctorsList() {
     }
   };
 
-  const fetchDoctors = useCallback(async () => {
-    try {
-      const res = await getAllDoctors(token);
-      setDoctors(res.data.doctors);
-    } catch (err) {
-      console.log(err);
-    }
-  }, [token]);
+const fetchDoctors = useCallback(async () => {
+  setLoading(true);
+
+  try {
+    const res = await getAllDoctors(token);
+    setDoctors(res.data.doctors);
+  } catch (err) {
+    console.log(err);
+  } finally {
+    setLoading(false);
+  }
+}, [token]);
 
   useEffect(() => {
     fetchDoctors();
@@ -81,67 +85,89 @@ function DoctorsList() {
             <div>Actions</div>
           </div>
 
-          {doctors.map((doctor) => (
-            <div className="doctor-row" key={doctor._id}>
-              <div className="doctor-information">
-                <h4>{doctor.user?.name}</h4>
-                <span>{doctor.qualification}</span>
-              </div>
-
-              <div className="specialization">{doctor.specialization}</div>
-
-              <div className="Hospital">{doctor.hospitalName}</div>
-
-              <div className="fee">₹{doctor.consultationFee}</div>
-
-              <div>
-                <span
-                  className={`status ${
-                    doctor.status === "Approved"
-                      ? "active"
-                      : doctor.status === "Rejected"
-                        ? "rejected"
-                        : "pending"
-                  }`}
-                >
-                  {doctor.status === "Approved"
-                    ? "active"
-                    : doctor.status === "Rejected"
-                      ? "rejected"
-                      : "pending"}
-                </span>
-              </div>
-
-              <div className="doctorAction-approval">
-                {doctor.status === "Pending" ? (
-                  <>
-                    <button onClick={() => handleApprove(doctor._id)}>
-                      Approve
-                    </button>
-
-                    <button onClick={() => handleReject(doctor._id)}>
-                      Reject
-                    </button>
-                  </>
-                ) : (
-                  <div className="doctorActions">
-                    <button
-                      onClick={() => {
-                        setSelectedDoctor(doctor);
-                        setShowModal(true);
-                      }}
-                    >
-                      <i className="fa-solid fa-eye"></i>
-                    </button>
-
-                    <button onClick={() => handleDelete(doctor._id)}>
-                      <i className="fa-regular fa-trash-can"></i>
-                    </button>
+          {loading
+            ? [...Array(6)].map((_, index) => (
+                <div className="doctor-row skeleton-row" key={index}>
+                  <div className="doctor-information">
+                    <div className="skeleton skeleton-name"></div>
+                    <div className="skeleton skeleton-text"></div>
                   </div>
-                )}
-              </div>
-            </div>
-          ))}
+
+                  <div className="skeleton skeleton-text"></div>
+
+                  <div className="skeleton skeleton-text"></div>
+
+                  <div className="skeleton skeleton-small"></div>
+
+                  <div className="skeleton skeleton-status"></div>
+
+                  <div className="doctorActions">
+                    <div className="skeleton skeleton-btn"></div>
+                    <div className="skeleton skeleton-btn"></div>
+                  </div>
+                </div>
+              ))
+            : doctors.map((doctor) => (
+                <div className="doctor-row" key={doctor._id}>
+                  <div className="doctor-information">
+                    <h4>{doctor.user?.name}</h4>
+                    <span>{doctor.qualification}</span>
+                  </div>
+
+                  <div className="specialization">{doctor.specialization}</div>
+
+                  <div className="Hospital">{doctor.hospitalName}</div>
+
+                  <div className="fee">₹{doctor.consultationFee}</div>
+
+                  <div>
+                    <span
+                      className={`status ${
+                        doctor.status === "Approved"
+                          ? "active"
+                          : doctor.status === "Rejected"
+                            ? "rejected"
+                            : "pending"
+                      }`}
+                    >
+                      {doctor.status === "Approved"
+                        ? "active"
+                        : doctor.status === "Rejected"
+                          ? "rejected"
+                          : "pending"}
+                    </span>
+                  </div>
+
+                  <div className="doctorAction-approval">
+                    {doctor.status === "Pending" ? (
+                      <>
+                        <button onClick={() => handleApprove(doctor._id)}>
+                          Approve
+                        </button>
+
+                        <button onClick={() => handleReject(doctor._id)}>
+                          Reject
+                        </button>
+                      </>
+                    ) : (
+                      <div className="doctorActions">
+                        <button
+                          onClick={() => {
+                            setSelectedDoctor(doctor);
+                            setShowModal(true);
+                          }}
+                        >
+                          <i className="fa-solid fa-eye"></i>
+                        </button>
+
+                        <button onClick={() => handleDelete(doctor._id)}>
+                          <i className="fa-regular fa-trash-can"></i>
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
 
           <div className="d-flex justify-content-center align-items-center p-4">
             Showing {doctors.length} of {doctors.length} doctor

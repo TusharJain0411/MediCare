@@ -15,8 +15,9 @@ function DoctorAppointment() {
 
   const Nav_width = useSelector((state) => state.alert.Nav_width);
 
-
   const [appointments, setAppointments] = useState([]);
+  
+  const [loading, setLoading] = useState(true);
 
   const token = localStorage.getItem("token");
  
@@ -25,15 +26,18 @@ function DoctorAppointment() {
     fetchAppointments();
   }, []);
 
-  const fetchAppointments = async () => {
-    try {
-      const res = await getDoctorAppointments(token);
+const fetchAppointments = async () => {
+  setLoading(true);
 
-      setAppointments(res.data.appointments);
-    } catch (err) {
-      toast.error(err.response?.data?.message);
-    }
-  };
+  try {
+    const res = await getDoctorAppointments(token);
+    setAppointments(res.data.appointments);
+  } catch (err) {
+    toast.error(err.response?.data?.message);
+  } finally {
+    setLoading(false);
+  }
+};
 
 
   const handleStatus = async (id, status) => {
@@ -73,59 +77,89 @@ function DoctorAppointment() {
     <div className="doctor-appointment">
       <h2 className="appointment-title">Patient Appointments</h2>
 
-      {appointments.map((item) => (
-        <div
-          className={!Nav_width ? " nav-width-ac" : "appointment-card"}
-          key={item._id}
-        >
-          <div className="patient-details">
-            <div className="patient-avatar">{item.user.name.charAt(0)}</div>
+      {loading ? (
+        [...Array(5)].map((_, index) => (
+          <div
+            className={
+              !Nav_width
+                ? "nav-width-ac skeleton-card"
+                : "appointment-card skeleton-card"
+            }
+            key={index}
+          >
+            <div className="patient-details">
+              <div className="patient-avatar skeleton"></div>
 
-            <div className="patient-info">
-              <h3>{item.user.name}</h3>
+              <div className="patient-info">
+                <div className="skeleton skeleton-name"></div>
+                <div className="skeleton skeleton-text"></div>
+                <div className="skeleton skeleton-small"></div>
+              </div>
+            </div>
 
-              <p>{item.disease}</p>
-              <span>
-                {new Date(item.date).toLocaleDateString()} · {item.time}
-              </span>
+            <div className="appointment-actions">
+              <div className="skeleton skeleton-status"></div>
+              <div className="skeleton skeleton-btn"></div>
+              <div className="skeleton skeleton-btn"></div>
             </div>
           </div>
+        ))
+      ) : appointments.length > 0 ? (
+        appointments.map((item) => (
+          <div
+            className={!Nav_width ? "nav-width-ac" : "appointment-card"}
+            key={item._id}
+          >
+            <div className="patient-details">
+              <div className="patient-avatar">{item.user.name.charAt(0)}</div>
 
-          <div className="appointment-actions">
-            <span className={`status ${item.status.toLowerCase()}`}>
-              {item.status}
-            </span>
+              <div className="patient-info">
+                <h3>{item.user.name}</h3>
+                <p>{item.disease}</p>
+                <span>
+                  {new Date(item.date).toLocaleDateString()} · {item.time}
+                </span>
+              </div>
+            </div>
 
-            {item.status === "Pending" && (
-              <>
+            <div className="appointment-actions">
+              <span className={`status ${item.status.toLowerCase()}`}>
+                {item.status}
+              </span>
+
+              {item.status === "Pending" && (
+                <>
+                  <button
+                    className="approve-btn"
+                    onClick={() => handleStatus(item._id, "Approved")}
+                  >
+                    Approve
+                  </button>
+
+                  <button
+                    className="reject-btn"
+                    onClick={() => handleStatus(item._id, "Rejected")}
+                  >
+                    Reject
+                  </button>
+                </>
+              )}
+
+              {item.status === "Approved" && (
                 <button
-                  className="approve-btn"
-                  onClick={() => handleStatus(item._id, "Approved")}
+                  className="complete-btn"
+                  disabled={!canCompleteAppointment(item.date, item.time)}
+                  onClick={() => handleStatus(item._id, "Completed")}
                 >
-                  Approve
+                  Complete
                 </button>
-
-                <button
-                  className="reject-btn"
-                  onClick={() => handleStatus(item._id, "Rejected")}
-                >
-                  Reject
-                </button>
-              </>
-            )}
-
-            {item.status === "Approved" && (
-              <button
-                className="complete-btn"
-                disabled={!canCompleteAppointment(item.date, item.time)}
-                onClick={() => handleStatus(item._id, "Completed")}
-              >
-                Complete
-              </button>
-            )}
+              )}
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      ) : (
+        <p>No appointments found.</p>
+      )}
     </div>
   );
 }

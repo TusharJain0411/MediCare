@@ -7,6 +7,7 @@ import profile_img from "../../../Assets/profile-img.jpg";
 
 function UserHome() {
 
+  const [loading, setLoading] = useState(true);
 
   const [doctors, setDoctors] = useState([]);
 
@@ -90,6 +91,8 @@ function UserHome() {
     });
   };
   const fetchDoctors = async () => {
+    setLoading(true);
+
     try {
       const res = await getAllDoctors(token);
 
@@ -100,87 +103,128 @@ function UserHome() {
       setDoctors(approvedDoctors);
     } catch (err) {
       toast.error(err.response?.data?.message || "Failed to load doctors");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <>
       <div className="doctor-grid">
-        {doctors.map((doctor) => (
-          <div className="doctor-card" key={doctor._id}>
-            <div className="doctor-banner">
-              <img
-                src={
-                  doctor.profileImage
-                    ? doctor.profileImage
-                    : profile_img
-                }
-                alt={doctor.user?.name}
-              />
+        {loading
+          ? [...Array(6)].map((_, index) => (
+              <div className="doctor-card skeleton-card" key={index}>
+                <div className="doctor-banner">
 
-              {isDoctorAvailable(doctor) ? (
-                <div className="available">
-                  <i
-                    className="fa-solid fa-circle fa-fade"
-                    style={{ color: "green" }}
-                  ></i>
-                  <span style={{ color: "green" }}>Available Today</span>
-                </div>
-              ) : (
-                <div className="available">
-                  <i
-                    className="fa-solid fa-circle"
-                    style={{ color: "red" }}
-                  ></i>
-                  <span style={{ color: "red" }}>Not Available</span>
-                </div>
-              )}
+                <div className="skeleton skeleton-banner-img"></div>
 
-              <div className="profile-img">
-                <img
-                  src={
-                    doctor.profileImage
-                      ? doctor.profileImage
-                      : profile_img
-                  }
-                  alt={doctor.user?.name}
-                />
-              </div>
-            </div>
 
-            <div className="doctor-body">
-              <h3>Dr. {doctor.user?.name}</h3>
+                 <div className="available">
+                 <div className="skeleton skeleton-dot"></div>
+                 <div className="skeleton skeleton-available-text"></div>
+                 </div>
 
-              <span className="speciality">{doctor.specialization}</span>
 
-              <p className="hospital">
-                <i className="fa-regular fa-hospital"></i>
-                {doctor.hospitalName}
-              </p>
-
-              <div className="doctor-info">
-                <div>
-                  <h4>{doctor.experience}y</h4>
-                  <span>Exp.</span>
-                </div>
-
-                <div>
-                  <h4>₹{doctor.consultationFee}</h4>
-                  <span>Fee</span>
-                </div>
+                <div className="profile-img">
+                <div className="skeleton skeleton-avatar"></div>
               </div>
 
-              <button
-                onClick={() => {
-                  setSelectedDoctor(doctor);
-                  setShowModal(true);
-                }}
-              >
-                Book Appointment
-              </button>
-            </div>
-          </div>
-        ))}
+                </div>
+
+                <div className="doctor-body">
+                  <div className="skeleton skeleton-title"></div>
+
+                  <div className="skeleton skeleton-subtitle"></div>
+
+                  <div className="skeleton skeleton-hospital"></div>
+
+                  <div className="doctor-info">
+                    <div>
+                      <div className="skeleton skeleton-number"></div>
+                      <div className="skeleton skeleton-small"></div>
+                    </div>
+
+                    <div>
+                      <div className="skeleton skeleton-number"></div>
+                      <div className="skeleton skeleton-small"></div>
+                    </div>
+                  </div>
+
+                  <div className="skeleton skeleton-button"></div>
+                </div>
+              </div>
+            ))
+          : doctors.map((doctor) => (
+              <div className="doctor-card" key={doctor._id}>
+                <div className="doctor-banner">
+                  <img
+                    src={
+                      doctor.profileImage ? doctor.profileImage : profile_img
+                    }
+                    alt={doctor.user?.name}
+                  />
+
+                  {isDoctorAvailable(doctor) ? (
+                    <div className="available">
+                      <i
+                        className="fa-solid fa-circle fa-fade"
+                        style={{ color: "green" }}
+                      ></i>
+                      <span style={{ color: "green" }}>Available Today</span>
+                    </div>
+                  ) : (
+                    <div className="available">
+                      <i
+                        className="fa-solid fa-circle"
+                        style={{ color: "red" }}
+                      ></i>
+                      <span style={{ color: "red" }}>Not Available</span>
+                    </div>
+                  )}
+
+                  <div className="profile-img">
+                    <img
+                      src={
+                        doctor.profileImage ? doctor.profileImage : profile_img
+                      }
+                      alt={doctor.user?.name}
+                    />
+                  </div>
+                </div>
+
+                <div className="doctor-body">
+                  <h3>Dr. {doctor.user?.name}</h3>
+
+                  <span className="speciality">{doctor.specialization}</span>
+
+                  <p className="hospital">
+                    <i className="fa-regular fa-hospital"></i>
+                    {doctor.hospitalName}
+                  </p>
+
+                  <div className="doctor-info">
+                    <div>
+                      <h4>{doctor.experience}y</h4>
+                      <span>Exp.</span>
+                    </div>
+
+                    <div>
+                      <h4>₹{doctor.consultationFee}</h4>
+                      <span>Fee</span>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      setSelectedDoctor(doctor);
+                      setShowModal(true);
+                    }}
+                  >
+                    Book Appointment
+                  </button>
+                </div>
+              </div>
+            ))}
       </div>
 
       {showModal && (
@@ -200,7 +244,7 @@ function UserHome() {
 
                 <input
                   type="text"
-                  value={selectedDoctor?.user?.name}
+                  value={`Dr. ${selectedDoctor?.user?.name}`}
                   readOnly
                 />
               </div>

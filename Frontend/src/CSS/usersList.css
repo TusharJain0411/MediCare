@@ -237,6 +237,60 @@ flex-direction: column;
   }
 }
 
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #e5e7eb;
+  border-radius: 6px;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.6),
+    transparent
+  );
+  animation: shimmer 1.3s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-name {
+  width: 140px;
+  height: 18px;
+  margin-bottom: 10px;
+}
+
+.skeleton-text {
+  width: 100px;
+  height: 14px;
+}
+
+.skeleton-small {
+  width: 70px;
+  height: 14px;
+}
+
+.skeleton-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+}
+
+.skeleton-row {
+  pointer-events: none;
+}
+
 @media (max-width:700px){
   .user-modal-body{
     grid-template-columns:1fr;

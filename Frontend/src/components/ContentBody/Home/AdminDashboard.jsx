@@ -11,23 +11,33 @@ function AdminDashboard() {
 
   const [recentDoctors, setRecentDoctors] = useState([]);
 
+  const [loadingDoctors, setLoadingDoctors] = useState(true);
+
+  const [loadingStats, setLoadingStats] = useState(true);
+
   const token = localStorage.getItem("token");
 
 
 
-  const fetchRecentDoctors = async () => {
-    try {
-      const { data } = await getRecentDoctors(token);
+const fetchRecentDoctors = async () => {
+  setLoadingDoctors(true);
 
-      if (data.success) {
-        setRecentDoctors(data.doctors);
-      }
-    } catch (error) {
-      toast.error("Failed to load recent doctors");
+  try {
+    const { data } = await getRecentDoctors(token);
+
+    if (data.success) {
+      setRecentDoctors(data.doctors);
     }
-  };
+  } catch (error) {
+    toast.error("Failed to load recent doctors");
+  } finally {
+    setLoadingDoctors(false);
+  }
+};
 
   const fetchDashboard = async () => {
+    setLoadingStats(true);
+
     try {
       const { data } = await getDashboardStats(token);
 
@@ -36,6 +46,8 @@ function AdminDashboard() {
       }
     } catch (err) {
       toast.error("Failed to load dashboard");
+    } finally {
+      setLoadingStats(false);
     }
   };
 
@@ -89,15 +101,48 @@ function AdminDashboard() {
           <div className="recent-doctors">
             <h2>Recent Doctors</h2>
 
-            {recentDoctors.length > 0 ? (
+            {loadingDoctors ? (
+              <div className="d-flex justify-content-center align-items-center h-75">
+                <button
+                  className="btn bg-transparent p-1 m-0"
+                  type="button"
+                  disabled
+                >
+                  <span
+                    className="spinner-grow spinner-grow-sm"
+                    style={{ backgroundColor: "#22C55E" }}
+                  ></span>
+                </button>
+
+                <button
+                  className="btn bg-transparent p-1 m-0"
+                  type="button"
+                  disabled
+                >
+                  <span
+                    className="spinner-grow spinner-grow-sm"
+                    style={{ backgroundColor: "#22C55E" }}
+                  ></span>
+                </button>
+
+                <button
+                  className="btn bg-transparent p-1 m-0"
+                  type="button"
+                  disabled
+                >
+                  <span
+                    className="spinner-grow spinner-grow-sm"
+                    style={{ backgroundColor: "#22C55E" }}
+                  ></span>
+                </button>
+              </div>
+            ) : recentDoctors.length > 0 ? (
               recentDoctors.map((doctor) => (
                 <div className="inside-doctor-row" key={doctor._id}>
                   <div className="recent-doctor-info">
                     <img
                       src={
-                        doctor.profileImage
-                          ? doctor.profileImage
-                          : profile_img
+                        doctor.profileImage ? doctor.profileImage : profile_img
                       }
                       alt={doctor.user?.name}
                     />
@@ -130,9 +175,14 @@ function AdminDashboard() {
 
               <div className="progress">
                 <div
-                  style={{
-                    width: `${stats.platformUptime || 0}%`,
-                  }}
+                  className={loadingStats ? "progress-loading" : ""}
+                  style={
+                    loadingStats
+                      ? {}
+                      : {
+                          width: `${stats.platformUptime || 0}%`,
+                        }
+                  }
                 ></div>
               </div>
             </div>
@@ -145,9 +195,14 @@ function AdminDashboard() {
 
               <div className="progress">
                 <div
-                  style={{
-                    width: `${stats.appointmentSuccessRate || 0}%`,
-                  }}
+                  className={loadingStats ? "progress-loading" : ""}
+                  style={
+                    loadingStats
+                      ? {}
+                      : {
+                          width: `${stats.appointmentSuccessRate || 0}%`,
+                        }
+                  }
                 ></div>
               </div>
             </div>
@@ -160,9 +215,14 @@ function AdminDashboard() {
 
               <div className="progress">
                 <div
-                  style={{
-                    width: `${stats.doctorApprovalRate || 0}%`,
-                  }}
+                  className={loadingStats ? "progress-loading" : ""}
+                  style={
+                    loadingStats
+                      ? {}
+                      : {
+                          width: `${stats.doctorApprovalRate || 0}%`,
+                        }
+                  }
                 ></div>
               </div>
             </div>

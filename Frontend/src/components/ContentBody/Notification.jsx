@@ -21,7 +21,7 @@ function Notification() {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const [notifications, setNotifications] = useState([]);
- 
+  const [loading, setLoading] = useState(true);
   const unreadCount = notifications.filter((n) => !n.isRead).length;
   const dispatch = useDispatch();
 
@@ -43,6 +43,8 @@ function Notification() {
   }, []);
 
 const fetchNotifications = async () => {
+  setLoading(true);
+
   try {
     const res = await getNotifications(token);
 
@@ -53,6 +55,8 @@ const fetchNotifications = async () => {
     );
   } catch (err) {
     toast.error("Failed to load notifications");
+  } finally {
+    setLoading(false);
   }
 };
 
@@ -116,7 +120,7 @@ const handleDeleteAll = async () => {
 
   return (
     <div className="notification-page">
-      {notifications.length != 0 && (
+      {(!loading && notifications.length != 0) && (
         <div className="notification-header">
           <span>{unreadCount} unread notifications</span>
 
@@ -138,9 +142,23 @@ const handleDeleteAll = async () => {
           </div>
         </div>
       )}
-      
 
-      {notifications.length === 0 ? (
+      {loading ? (
+        [...Array(6)].map((_, index) => (
+          <div className="notification-card skeleton-card" key={index}>
+            <div className="notification-icon skeleton skeleton-icon"></div>
+
+            <div className="notification-body">
+              <div className="skeleton skeleton-title"></div>
+
+              <div className="skeleton skeleton-message"></div>
+              <div className="skeleton skeleton-message short"></div>
+
+              <div className="skeleton skeleton-time"></div>
+            </div>
+          </div>
+        ))
+      ) : notifications.length === 0 ? (
         <h4 style={{ textAlign: "center", marginTop: 30 }}>No Notifications</h4>
       ) : (
         notifications.map((item) => (

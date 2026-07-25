@@ -89,6 +89,7 @@ background-color: var(--input-background);
   align-items: center;
   font-size: 22px;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 .patient-info h3 {
@@ -177,6 +178,79 @@ background-color: var(--input-background);
   background: #F3FFF7;
   color: #333;
 }
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #e5e7eb;
+  border-radius: 8px;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.7),
+    transparent
+  );
+  animation: shimmer 1.2s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-card {
+  pointer-events: none;
+}
+
+.skeleton-name {
+  width: 150px;
+  height: 18px;
+  margin-bottom: 10px;
+}
+
+.skeleton-text {
+  width: 120px;
+  height: 14px;
+  margin-bottom: 8px;
+}
+
+.skeleton-small {
+  width: 90px;
+  height: 12px;
+}
+
+.patient-avatar.skeleton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.skeleton-status {
+  width: 90px;
+  height: 30px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.skeleton-btn {
+  width: 90px;
+  height: 36px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+
+
+
+
 
 @media (max-width: 768px) {
 

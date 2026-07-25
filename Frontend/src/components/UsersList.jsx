@@ -8,6 +8,7 @@ function UsersList() {
  const [users, setUsers] = useState([]);
 const [showModal, setShowModal] = useState(false);
 const [selectedUser, setSelectedUser] = useState(null);
+const [loading, setLoading] = useState(true);
 
  const handleDelete = async (id) => {
    try {
@@ -22,11 +23,15 @@ const [selectedUser, setSelectedUser] = useState(null);
  };
 
 const fetchUsers = async () => {
+  setLoading(true);
+
   try {
     const res = await getAllUsers(token);
     setUsers(res.data.users);
   } catch (err) {
     toast.error(err.response?.data?.message || "Error");
+  } finally {
+    setLoading(false);
   }
 };
 
@@ -48,36 +53,58 @@ const token = localStorage.getItem("token");
             <div>Actions</div>
           </div>
 
-          {users.map((user) => (
-            <div className="user-row" key={user._id}>
-              <div className="user-information ">
-                <h4>{user.name}</h4>
-                <span>{user.email}</span>
-              </div>
-              <div>{user.phone}</div>
-              <div>{new Date(user.createdAt).toLocaleDateString()}</div>
+          {loading
+            ? [...Array(6)].map((_, index) => (
+                <div className="user-row skeleton-row" key={index}>
+                  <div className="user-information">
+                    <div className="skeleton skeleton-name"></div>
+                    <div className="skeleton skeleton-text"></div>
+                  </div>
 
-              <div className="appoint">{user.totalAppointments}</div>
+                  <div className="skeleton skeleton-text"></div>
 
-              <div className="userActions">
-                <button
-                  onClick={() => {
-                    setSelectedUser(user);
-                    setShowModal(true);
-                  }}
-                >
-                  <i className="fa-regular fa-eye"></i>
-                </button>
-                <button onClick={() => handleDelete(user._id)}>
-                  <i className="fa-regular fa-trash-can"></i>
-                </button>
-              </div>
+                  <div className="skeleton skeleton-small"></div>
+
+                  <div className="skeleton skeleton-small"></div>
+
+                  <div className="userActions">
+                    <div className="skeleton skeleton-btn"></div>
+                    <div className="skeleton skeleton-btn"></div>
+                  </div>
+                </div>
+              ))
+            : users.map((user) => (
+                <div className="user-row" key={user._id}>
+                  <div className="user-information ">
+                    <h4>{user.name}</h4>
+                    <span>{user.email}</span>
+                  </div>
+                  <div>{user.phone}</div>
+                  <div>{new Date(user.createdAt).toLocaleDateString()}</div>
+
+                  <div className="appoint">{user.totalAppointments}</div>
+
+                  <div className="userActions">
+                    <button
+                      onClick={() => {
+                        setSelectedUser(user);
+                        setShowModal(true);
+                      }}
+                    >
+                      <i className="fa-regular fa-eye"></i>
+                    </button>
+                    <button onClick={() => handleDelete(user._id)}>
+                      <i className="fa-regular fa-trash-can"></i>
+                    </button>
+                  </div>
+                </div>
+              ))}
+          {!loading && (
+            <div className="p-4 text-center">
+              Showing {users.length} of {users.length}{" "}
+              {users.length === 1 ? "user" : "users"}
             </div>
-          ))}
-          <div className="p-4 text-center">
-            Showing {users.length} of {users.length}{" "}
-            {users.length === 1 ? "user" : "users"}
-          </div>
+          )}
         </div>
       </div>
 

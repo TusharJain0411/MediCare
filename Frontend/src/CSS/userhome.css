@@ -273,6 +273,103 @@ font-size: 7px;
 }
 
 
+/* Skeleton */
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #e5e7eb;
+  border-radius: 8px;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.7),
+    transparent
+  );
+  animation: shimmer 1.2s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-card {
+  pointer-events: none;
+}
+
+.skeleton-banner-img {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+/* Profile Image */
+.skeleton-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+/* Available Status */
+.skeleton-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.skeleton-available-text {
+  width: 90px;
+  height: 14px;
+  margin-left: 8px;
+}
+
+.skeleton-title {
+  width: 70%;
+  height: 22px;
+  margin: 20px 0 12px;
+}
+
+.skeleton-subtitle {
+  width: 45%;
+  height: 16px;
+  margin-bottom:  15px;
+}
+
+.skeleton-hospital {
+  width: 80%;
+  height: 16px;
+  margin-bottom:20px;
+}
+
+.skeleton-number {
+  width: 45px;
+  height: 20px;
+  margin-bottom: 8px;
+}
+
+.skeleton-small {
+  width: 35px;
+  height: 12px;
+  margin: auto;
+}
+
+.skeleton-button {
+  width: 100%;
+  height: 46px;
+  border-radius: 10px;
+  margin-top: 25px;
+}
+
+
 
 
 
