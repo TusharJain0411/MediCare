@@ -39,10 +39,10 @@
     border-radius: 25px;
     display: flex;
     
-    padding: 0.2rem 3rem;
+    padding: 0.2rem ;
     gap: 0.5rem;
     font-size: 14px;
-    justify-content: space-between;
+    justify-content: center;
     align-items:center;
     margin-bottom: 1rem;
     border: 2px solid var(--switch-background);
@@ -149,7 +149,23 @@ font-weight: 600;
     color: var(--Primary);
     font-weight: 800;
     margin-bottom: 2rem;
+
 }
+
+.adminCrendentials{flex-direction:column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0.2rem 1rem;
+    gap: 0rem;
+}
+.adminCrendentials span:last-child{
+    flex-direction: row;
+}
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+.adminCrendentials{flex-direction: column;}
 }
 
 /* Small Phones */
@@ -163,9 +179,7 @@ font-weight: 600;
 }
 
 /* Tablets */
-@media (min-width: 768px) and (max-width: 991px) {
 
-}
 
 /* Small Laptops */
 @media (min-width: 992px) and (max-width: 1199px) {

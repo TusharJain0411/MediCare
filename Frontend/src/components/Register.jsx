@@ -194,9 +194,25 @@ function Register({ switchToLogin }) {
               onKeyDown={(e) => handleKeyDown(e, 3)}
             />
           </div>
-          <button ref={submitBtn}>Create Account</button>
+
+          {loading ? (
+            <button  type="button" disabled>
+              <span
+                className="spinner-border spinner-border-sm  mx-2"
+                role="status"
+                aria-hidden="true"
+              ></span>
+              Creating Account...
+            </button>
+          ) : (
+            <button ref={submitBtn} >
+              <span>Create Account</span>
+            </button>
+          )}
+
+         
         </form>
-      </div>
+      </div> 
     </>
   );
 }

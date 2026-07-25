@@ -2,7 +2,8 @@ const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const Doctor = require("../models/Doctor");
 const bcrypt = require("bcryptjs");
-const Notification=require("../models/Notification"); 
+const Notification = require("../models/Notification");
+const createNotification = require("../utils/createNotification");
 
 
 const generateToken = (user) => {
@@ -55,17 +56,15 @@ const getVerifyToken = async (req, res) => {
 
 
 const register = async (req, res) => {
-
   try {
-  if (!req.body) {
-    return res.status(400).json({
-      success: false,
-      message: "Request body is undefined",
-    });
-  }
- 
-    const { name, email, phone, password } =
-      req.body;
+    if (!req.body) {
+      return res.status(400).json({
+        success: false,
+        message: "Request body is undefined",
+      });
+    }
+
+    const { name, email, phone, password } = req.body;
 
     const userExists = await User.findOne({ email });
 
@@ -75,19 +74,25 @@ const register = async (req, res) => {
         message: "Email already exists",
       });
     }
-       const hashedPassword = await bcrypt.hash(password, 10);
-  
-await User.create({
-  name,
-  email,
-  phone,
-  password: hashedPassword,
 
-});
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = await User.create({
+      name,
+      email,
+      phone,
+      password: hashedPassword,
+    });
+
+  
+
+
+  
+   
 
     return res.status(201).json({
       success: true,
-      message: "User registered successfully"
+      message: "User registered successfully",
     });
   } catch (error) {
     console.error(error);
@@ -98,7 +103,6 @@ await User.create({
     });
   }
 };
-
 
 const logout = async (req, res) => {
   try {
