@@ -124,6 +124,8 @@ const handleHidePassword=()=>{
         </h4>
         <h2>Welcome back</h2>
         <p>Sign in to your account to continue</p>
+         
+        <div className='adminCrendentials'><span>Admin Credentials:</span> <span><i>admin@gmail.com</i> <i>password:12345</i></span></div>
 
         <form className="LoginInput">
           <div>
